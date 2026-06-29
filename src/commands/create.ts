@@ -1,5 +1,5 @@
 import { Command } from "commander";
-import { generateApp } from "../actions/create-app.js";
+import { createApp } from "../actions/create-app.js";
 
 export function registerCreateCommand(program: Command) {
 
@@ -8,6 +8,6 @@ export function registerCreateCommand(program: Command) {
         .argument("<project-name>")
         .description("Create a new Spice project")
         .action(async (projectName) => {
-            await generateApp(projectName);
+            await createApp(projectName);
         });
 }

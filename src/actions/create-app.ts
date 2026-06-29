@@ -1,10 +1,14 @@
-import fs from "fs-extra";
-import path from "node:path";
+import { copyDirectory } from "../engines/copy.engine.js";
+import { getTemplateDirectory } from "../utils/path.js";
+import { isProjectNameValid } from "../utils/validate.js";
 
-export async function generateApp(projectName:string) {
-    const target = path.join(process.cwd(), projectName);
+export async function createApp(projectName:string) {
+    if (!isProjectNameValid(projectName)) {
+        throw new Error("Invalid project name.");
+    }
     
-    await fs.ensureDir(target);
+    const template = getTemplateDirectory("monolith");
+    await copyDirectory(template, projectName);
 
     console.log(`Created ${projectName}`);
 }

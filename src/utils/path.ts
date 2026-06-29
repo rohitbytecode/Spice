@@ -11,7 +11,7 @@ export function getRootDirectory() {
 export function getTemplateDirectory(name: string) {
     return path.join(
         getRootDirectory(),
-        "template",
+        "templates",
         name
     );
 }
