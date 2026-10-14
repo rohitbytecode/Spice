@@ -1,5 +1,5 @@
 export interface TemplateContext {
-    projetName: string;
+    projectName: string;
     author?: string;
     packageManager?: string;
 }
