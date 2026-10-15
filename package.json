@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "@types/fs-extra": "^11",
-    "@types/node": "^24",
+    "@types/node": "^24.19.2",
     "tsx": "^4",
     "typescript": "^5"
   },
