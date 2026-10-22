@@ -20,9 +20,7 @@ function capitalize(word: string): string {
     return word.charAt(0).toUpperCase() + word.slice(1);
 }
 
-export function deriveNamingConvention(
-    input: string,
-): NamingConvention {
+export function deriveNamingConvention(input: string): NamingConvention {
     const words = splitWords(input);
 
     if (words.length === 0) {
@@ -31,9 +29,7 @@ export function deriveNamingConvention(
 
     const kebabName = words.join("-");
     const pascalName = words.map(capitalize).join("");
-    const camelName =
-        words[0] +
-        words.slice(1).map(capitalize).join("");
+    const camelName = words[0] + words.slice(1).map(capitalize).join("");
     const constantName = words.join("_").toUpperCase();
 
     return {

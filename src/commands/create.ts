@@ -2,7 +2,6 @@ import { Command } from "commander";
 import { createApp } from "../actions/create-app.js";
 
 export function registerCreateCommand(program: Command) {
-
     program
         .command("create")
         .argument("<project-name>")

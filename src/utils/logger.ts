@@ -1,7 +1,6 @@
 import chalk from "chalk";
 
 export const logger = {
-
     info(message: string) {
         console.log(chalk.cyan(message));
     },
@@ -16,5 +15,5 @@ export const logger = {
 
     error(message: string) {
         console.log(chalk.red(message));
-    }
+    },
 };

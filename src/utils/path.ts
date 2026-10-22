@@ -9,9 +9,5 @@ export function getRootDirectory() {
 }
 
 export function getTemplateDirectory(name: string) {
-    return path.join(
-        getRootDirectory(),
-        "templates",
-        name
-    );
+    return path.join(getRootDirectory(), "templates", name);
 }

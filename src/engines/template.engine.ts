@@ -1,6 +1,6 @@
-import fs from 'fs-extra';
-import path from 'node:path';
-import type { TemplateContext } from '../types/template.js';
+import fs from "fs-extra";
+import path from "node:path";
+import type { TemplateContext } from "../types/template.js";
 
 const TEXT_EXTENSIONS = new Set([
     ".json",
@@ -25,7 +25,7 @@ const TEXT_EXTENSIONS = new Set([
     ".gitignore",
 ]);
 
-const TEXT_FILENAMES =new Set([
+const TEXT_FILENAMES = new Set([
     ".gitignore",
     ".npmrc",
     ".nvmrc",
@@ -34,19 +34,14 @@ const TEXT_FILENAMES =new Set([
     "LICENSE",
 ]);
 
-export function renderTemplate(
-    content: string,
-    context: TemplateContext,
-): string {
+export function renderTemplate(content: string, context: TemplateContext): string {
     const rendered = content.replace(
         /\{\{\s*([a-zA-Z][a-zA-Z0-9_]*)\s*\}\}/g,
         (placeholder, key: string) => {
             const value = context[key as keyof TemplateContext];
 
             if (value === undefined || value === null) {
-                throw new Error(
-                    `Missing template variable: ${key}`,    
-                );
+                throw new Error(`Missing template variable: ${key}`);
             }
 
             return String(value);
@@ -56,10 +51,7 @@ export function renderTemplate(
     return rendered;
 }
 
-export async function renderDirectory(
-    directory: string,
-    context: TemplateContext, 
-): Promise<void> {
+export async function renderDirectory(directory: string, context: TemplateContext): Promise<void> {
     const entries = await fs.readdir(directory, {
         withFileTypes: true,
     });
@@ -79,7 +71,7 @@ export async function renderDirectory(
         const extension = path.extname(entry.name);
         const isTextFile = TEXT_EXTENSIONS.has(extension) || TEXT_FILENAMES.has(entry.name);
 
-        if(!isTextFile) {
+        if (!isTextFile) {
             continue;
         }
 
