@@ -1,5 +1,5 @@
 export interface NamingConvention {
-    originName: string;
+    originalName: string;
     kebabName: string;
     camelName: string;
     pascalName: string;
@@ -37,7 +37,7 @@ export function deriveNamingConvention(
     const constantName = words.join("_").toUpperCase();
 
     return {
-        originName: input,
+        originalName: input,
         kebabName,
         camelName,
         pascalName,
